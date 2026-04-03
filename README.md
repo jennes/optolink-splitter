@@ -104,7 +104,7 @@ On initial install
 - copy `settings_ini.py.example` to `settings_ini.py`. Modify `settings_ini.py` according to your heating device. 
 - copy `poll_list.py.example` to `poll_list.py` and modify it according to your desired datapoints.
 
-If you're using **Home Assistant** consider to utilize `ha_shared_config.py` for combined datapoints and entities definition!
+If you're using **Home Assistant** consider to utilize `homeassistant_poll_list.py` for combined datapoints and entities definition (see [Wiki for details](https://github.com/philippoo66/optolink-splitter/wiki/211-Alternative-Home-Assistant-Integration))!
 
 Regading datapoints refer  
 - to [Wiki | Parameter Addresses](https://github.com/philippoo66/optolink-splitter/wiki/310-Parameter-Addresses), [poll_list samples](https://github.com/philippoo66/optolink-splitter/wiki/350-Poll-Configuration-Samples)
@@ -122,7 +122,7 @@ If you want to update your installation to a new version, the recommended way is
 - make a backup copy of your current installation (folder)
 - from the new version repo, clone **all files** into your original folder (replace existing files)
 
-Since version 1.8.4 it is not necessary anymore to add new settings to your settings_ini since there are default values used for every setting. also your settings_ini.py, poll_list.py and ha_shared_config.py will not get overwritten anymore since all those files got the extension .example in the repo since V1.9. 
+It is not necessary anymore to add new settings to your settings_ini since there are default values used for every setting. Also your settings_ini.py, poll_list.py and ha_shared_config.py will not get overwritten anymore since all those files got the extension .example in the repo since V1.9. 
 
 Don't forget to restart the script / the service afterwards.
 
@@ -190,7 +190,17 @@ mosquitto_pub -t "vito/hk1_partymode/set" -m "OFF"
 
 # Set hot water temperature
 mosquitto_pub -t "vito/hotwater_temperature/set" -m "50"
+
+# run circulation pump 
+# 8:00-9:00 continuously (function code 3), 
+# 12:00-13:00 5 minutes every half hour (function code 1)
+# 19:30-22:00 5 minutes every 15 minutes (function code 2)
+mosquitto_pub -h your-broker -t "Vito/dhw_circulation_monday/set" -m "8:00-9:00 *3, 12:00-13:00 *1, 19:30-22:00 *2"
 ```
+
+MQTT Explorer example:
+
+![grafik](https://private-user-images.githubusercontent.com/122479122/553739544-540e3710-d11b-4fe5-95b4-2bd234fac0f3.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NzUyMDI1NjMsIm5iZiI6MTc3NTIwMjI2MywicGF0aCI6Ii8xMjI0NzkxMjIvNTUzNzM5NTQ0LTU0MGUzNzEwLWQxMWItNGZlNS05NWI0LTJiZDIzNGZhYzBmMy5wbmc_WC1BbXotQWxnb3JpdGhtPUFXUzQtSE1BQy1TSEEyNTYmWC1BbXotQ3JlZGVudGlhbD1BS0lBVkNPRFlMU0E1M1BRSzRaQSUyRjIwMjYwNDAzJTJGdXMtZWFzdC0xJTJGczMlMkZhd3M0X3JlcXVlc3QmWC1BbXotRGF0ZT0yMDI2MDQwM1QwNzQ0MjNaJlgtQW16LUV4cGlyZXM9MzAwJlgtQW16LVNpZ25hdHVyZT0wMWM1MDZjMTQ3ZTEzZjM4N2Q3NzJmZTI1Y2UxZGZmYjhiNWMyZjY5Y2M2Mzg2NjA3MDJlYzE5ZmZkZTRmNWVlJlgtQW16LVNpZ25lZEhlYWRlcnM9aG9zdCJ9.U6X2Ct3OeDpWx38iLpsqv1PbUDC_RTM-ys-nvS5QJRM)
 
 For complete documentation with more examples, see **[MQTT_SET_TOPICS.md](MQTT_SET_TOPICS.md)**.
 
