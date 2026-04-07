@@ -122,7 +122,7 @@ If you want to update your installation to a new version, the recommended way is
 - make a backup copy of your current installation (folder)
 - from the new version repo, clone **all files** into your original folder (replace existing files)
 
-It is not necessary anymore to add new settings to your settings_ini since there are default values used for every setting. Also your settings_ini.py, poll_list.py and ha_shared_config.py will not get overwritten anymore since all those files got the extension .example in the repo since V1.9. 
+It is not necessary anymore to add new settings to your settings_ini since there are default values used for every setting. Also your settings_ini.py, poll_list.py and homeassistant_poll_list.py will not get overwritten anymore since all those files got the extension .example in the repo since V1.9. 
 
 Don't forget to restart the script / the service afterwards.
 
