@@ -3,6 +3,17 @@
 # Syncs files and runs remote installation script
 # Usage: REMOTE_USER=username REMOTE_HOST=hostname ./deploy.sh
 
+#################################################################
+# ATTENTION!
+# This script has not been prooved by the author of the project.
+# You may try, but I can not support.
+# The recommended way to install or update is described in the 
+# README of the project. /philippoo66
+# ###############################################################
+
+echo "ATTENTION!"
+echo "This script has not been prooved by the author of the project."
+
 set -e
 
 # Configuration

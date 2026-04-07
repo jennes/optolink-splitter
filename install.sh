@@ -3,6 +3,17 @@
 # Can be run locally or remotely via deploy.sh
 # Usage: sudo ./install.sh [SERIAL_GROUP] [DEPLOYING_USER]
 
+#################################################################
+# ATTENTION!
+# This script has not been prooved by the author of the project.
+# You may try, but I can not support.
+# The recommended way to install is described in the README 
+# of the project. /philippoo66
+# ###############################################################
+
+echo "ATTENTION!"
+echo "This script has not been prooved by the author of the project."
+
 set -e
 
 INSTALL_PATH="${INSTALL_PATH:-/opt/optolink}"
